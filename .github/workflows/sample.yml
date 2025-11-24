@@ -1,8 +1,31 @@
+name: Manual Pipeline Trigger 🚀
+
+# This section enables the manual trigger option in the GitHub Actions tab
 on:
-  # This makes the workflow available to run manually from the GitHub UI (Actions tab)
   workflow_dispatch:
     inputs:
+      # Optional input field to provide context when running manually
       reason:
-        description: 'Why are you manually triggering this run?'
+        description: 'Reason for manual execution'
         required: true
-        default: 'Manual test run'
+        default: 'Ad hoc test run'
+
+# Define the jobs that run
+jobs:
+  run_manual_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Display Input Reason
+        # Accesses the input provided in the manual trigger dialog
+        run: echo "Triggered with reason: ${{ github.event.inputs.reason }}"
+        
+      - name: Trigger External Pipeline (Simulated)
+        # REPLACE THIS with the actual command or script you use 
+        # to send the message to your external pipeline (e.g., cURL, Python script, or Action)
+        run: echo "Sending trigger message to external service..."
+        
+      - name: Completion Message
+        run: echo "Manual workflow completed successfully."
