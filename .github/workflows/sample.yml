@@ -1,0 +1,8 @@
+on:
+  # This makes the workflow available to run manually from the GitHub UI (Actions tab)
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Why are you manually triggering this run?'
+        required: true
+        default: 'Manual test run'
