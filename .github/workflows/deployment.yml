@@ -1,4 +1,10 @@
 name: Create Deployment
+
+permissions:
+  contents: read
+  deployments: write
+
+
 on:
   workflow_dispatch:
 
