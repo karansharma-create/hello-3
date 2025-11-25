@@ -1,6 +1,10 @@
 name: Manual Pipeline Trigger 🚀
 
 # This section enables the manual trigger option in the GitHub Actions tab
+permissions:
+  contents: read
+  deployments: write
+
 on:
   workflow_dispatch:
     inputs:
